@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator | Lab 4</title>
+
+    <style>
+        body{
+            background-color: cornsilk;
+            
+        }
+
+        #FH {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-style: italic;
+            color: brown;
+        }
+
+        input[type="button"]{
+            color:white;  
+            background-color: brown;  
+            border: none;
+            font-style: italic;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: medium;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
+                               
+        }
+          /* Add hover effect to the button */
+          input[type="button"]:hover {
+            background-color: darkred;
+        }
+
+        #result{
+            color: brown;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 200%;
+            font-style: italic;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+   <h1 id="FH">Please Enter Two Numbers:</h1> 
+
+   <!-- Inputs for numbers -->
+   <input type="number" id="num11" placeholder="First Number"><br>
+   <input type="number" id="num22" placeholder="Second Number"><br><br>
+
+   <!-- Operation selection with radio buttons -->
+   <form>
+        <input type="radio" id="Add" name="operation" value="Add">
+        <label for="Add">Add</label><br>
+        <input type="radio" id="Subtraction" name="operation" value="Sub">
+        <label for="Subtraction">Subtract</label><br>
+        <input type="radio" id="Multiplication" name="operation" value="Product">
+        <label for="Multiplication">Multiply</label><br>
+        <input type="radio" id="Division" name="operation" value="Divide">
+        <label for="Division">Divide</label><br><br>
+   </form>
+   
+   <!-- Button to submit the calculation -->
+   <input type="button" value="Submit" onclick="calculateResult()">
+   
+   <!-- Area to display the result -->
+   <h2 id="result"></h2>
+
+   <script>
+       function calculateResult() {
+           // Get the numbers from the inputs
+           var num1 = parseFloat(document.getElementById('num11').value);
+           var num2 = parseFloat(document.getElementById('num22').value);
+           
+           // Get the selected operation
+           var operation = document.querySelector('input[name="operation"]:checked');
+           
+           // Check if inputs are valid
+           if (isNaN(num1) || isNaN(num2)) {
+               document.getElementById('result').innerText = "Please enter valid numbers.";
+               return;
+           }
+           
+           // Check if an operation is selected
+           if (!operation) {
+               document.getElementById('result').innerText = "Please select an operation.";
+               return;
+           }
+
+           // Perform the selected operation
+           var result;
+           if (operation.value === "Add") {
+               result = num1 + num2;
+           } else if (operation.value === "Sub") {
+               result = num1 - num2;
+           } else if (operation.value === "Product") {
+               result = num1 * num2;
+           } else if (operation.value === "Divide") {
+               if (num2 === 0) {
+                   result = "Cannot divide by zero!";
+               } else {
+                   result = num1 / num2;
+               }
+           }
+           
+           // Display the result
+           document.getElementById('result').innerText = "Result: " + result;
+       }
+    
+   </script>
+</body>
+</html>

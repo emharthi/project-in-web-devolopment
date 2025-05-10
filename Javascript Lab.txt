@@ -1,0 +1,7 @@
+Design a calculator that takes input from a user and then output the type of operation chosen by the user:
+
+1-You must use JavaScript to perform the different arthmatic operations. 
+
+2-Once you finish, upload your code.
+
+3-Deadline: Sunday 22/9/2024
